@@ -4,8 +4,8 @@
 // a definition of the current git version for the build
 #include "gen_versionnumber.h"
 
-namespace Ripes {
+//namespace Ripes {
 
 QString getRipesVersion() { return QString(RIPES_GIT_VERSION); }
 
-} // namespace Ripes
+//} // namespace Ripes

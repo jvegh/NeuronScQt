@@ -2,6 +2,6 @@
 
 #include <QString>
 
-namespace Ripes {
+//namespace Ripes {
 QString getRipesVersion();
-}
+//}

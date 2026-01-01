@@ -10,7 +10,7 @@
 //#include "QStuff.h"
 //#include "Stuff.h"
 //#include "edittab.h"
-//#include "../version/version.h"
+#include "../version/version.h"
 
 extern struct SystemDirectories Directories;
 
@@ -58,7 +58,7 @@ ScQtNeuron_MainWindow::ScQtNeuron_MainWindow(QWidget *parent) :
 
 
 //    setStyleSheet("border: 1px solid green");
-    setWindowTitle( "ScQtNeuron main window" );
+    setWindowTitle( "NeuronScQt main window" );
     setIconSize(QSize(24,24));
     QSystemTrayIcon(this).setIcon( QIcon( ":/images/ESlogo.png" ) );
     setMinimumSize( QSize( 600, 400 ) );
@@ -334,7 +334,7 @@ void ScQtNeuron_MainWindow::version() {
     QMessageBox aboutDialog(this);
     aboutDialog.setWindowIcon(QIcon(":/icons/neurer.png"));
 
-    aboutDialog.setText("NeuRipes :" /*+ Ripes::getRipesVersion()*/);
+    aboutDialog.setText("NeuRipes :" + getRipesVersion());
     aboutDialog.exec();
 }
 

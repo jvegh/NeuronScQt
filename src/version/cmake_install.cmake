@@ -1,4 +1,4 @@
-# Install script for directory: /home/jvegh/REPO/DANCES/SystemC/src/version
+# Install script for directory: /home/jvegh/REPO/SystemC/Ripes/src/version
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
