@@ -69,15 +69,16 @@ endif()
 create_ripes_lib(${RIPES_LIB} FIXED_NAME EXCLUDE_SRC_INC)
 
 # All of the following subdirectories will create separate libraries and link them into
-#add_subdirectory(version)
+# ripes_lib
+add_subdirectory(version)
 #add_subdirectory(cli)
 
 
 # Also link Qt and VSRTL libraries.
-#target_link_libraries(#${RIPES_LIB}  PUBLIC
-#    fancytabbar_lib
-#    ${VSRTL_GRAPHICS_LIB}
-#    Qt6::Charts
-#    dwarf++
-#    )
+target_link_libraries(${RIPES_LIB}  PUBLIC
+    fancytabbar_lib
+  #  ${VSRTL_GRAPHICS_LIB}
+    Qt6::Charts
+    #dwarf++
+    )
 
