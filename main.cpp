@@ -9,7 +9,7 @@
 
 //#include "src/cli/clioptions.h"
 //#include "src/cli/clirunner.h"
-//#include "ScQtNeuron_MainWindow.h"
+#include "ScQtNeuron_MainWindow.h"
 //#include "src/mainwindow.h"
 //#include "src/ripes_lib_autogen/include/ui_mainwindow.h"
 
@@ -60,7 +60,7 @@ CommandLineParseResult parseCommandLine(QCommandLineParser &parser,
 }
 */
 int guiMode(QApplication &app) {
-/*
+
     ScQtNeuron_MainWindow m;
 
 #ifdef Q_OS_WASM
@@ -77,7 +77,7 @@ int guiMode(QApplication &app) {
 //  m.showMaximized();
 //  m.setWindowState(Qt::WindowMaximized);
   //QTimer::singleShot(100, &m, [&m] { m.fitToView(); });
-*/
+
   return app.exec();
 }
 
