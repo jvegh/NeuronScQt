@@ -11,6 +11,13 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${S
   option (DEBUG_MODE "Include debug support for the package"  ON)
 # Choose whether you need to build GTest executables
   option(BUILD_GTESTS "Build Gtest tests" ON)
+  string(TIMESTAMP PROJECT_TIMESTAMP "%Y%m%d")
+  set(CPACK_PACKAGE_NAME "NeuronScQt")
+  set(RIPES_GIT_VERSION "0.0.1")
+    project(NeuronScQt VERSION ${RIPES_GIT_VERSION} LANGUAGES C CXX)
+
+    message(HIGHLIGHTED "Configuring ${PROJECT_NAME} V${PROJECT_VERSION}@${PROJECT_TIMESTAMP} debug version")
+
 include(Colorize)
 include(BuildType)
 
@@ -92,11 +99,13 @@ elseif(${WIN32})
 endif()
 
 # Fix the name of the libraries.
+set(RIPES_LIB ripes_lib)
 set(NEURON_LIB neuron_lib)
-#?set(VERSION_LIB version_lib)
+set(VERSION_LIB version_lib)
 add_subdirectory(src)
-#add_subdirectory(neuron)
+add_subdirectory(neuron)
 add_subdirectory(3rdParty/qcustomplot)
+add_subdirectory(3rdParty/fancytabbar)
 
 add_subdirectory(demos)
 
@@ -117,9 +126,10 @@ ${FONTS_SRC} main.cpp)
 # Link Qt libraries
 #target_link_libraries(${APP_NAME} PUBLIC Qt6::Core Qt6::Widgets)
 # Link Ripes library
-target_link_libraries(${APP_NAME} PUBLIC #${RIPES_LIB}
-                                  #${NEURON_LIB}
-                                  #version_lib
+target_link_libraries(${APP_NAME} PUBLIC ${RIPES_LIB}
+                                  ${FANCYTABBAR_LIB}
+                                  ${NEURON_LIB}
+                                  version_lib
                                   SystemC::systemc
                                   Qt6::Core Qt6::Widgets
                                   QCustomPlot  Qt6::PrintSupport
@@ -127,7 +137,7 @@ target_link_libraries(${APP_NAME} PUBLIC #${RIPES_LIB}
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     # https://doc.qt.io/qt-6/wasm.html#asyncify
-##    target_link_options(${RIPES_LIB} PUBLIC -sASYNCIFY -Os)
+    target_link_options(${RIPES_LIB} PUBLIC -sASYNCIFY -Os)
     target_link_options(${APP_NAME} PUBLIC -sASYNCIFY -Os)
 endif()
 
